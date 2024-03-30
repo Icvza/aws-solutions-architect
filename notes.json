@@ -1,24 +1,328 @@
 {
-    "IAM role": {
-        "IAM-credentials-report": "Account level lists the users and the status of their credentials",
-        "IAM-access-advisor": " User level shows the services permissions granted to a user and when they lasted used them",
-        "notes": "credentials-report: download as a csv file next rotation password last change keys mfa active access advisor: can use to see what access a user has and revok uneeded access",
-        "IAM guidelines and best practices": {
-            "one": "Don't use the root account except for initial setup",
-            "two": "One person is one aws user",
-            "three": "strong passowrd",
-            "four": "enable mfa",
-            "five": "create and use roles for giving permissions to aws services",
-            "six": "Will have to use access keys for the CLI "
-        },
-        "questions": {
-            "n IAM policy consists of one or more statements. A statement in an IAM Policy consists of the following, EXCEPT": "A statement in an IAM Policy consists of Sid, Effect, Principal, Action, Resource, and Condition. Version is part of the IAM Policy itself, not the statement.",
-            "two": "What is the IAM access advisor?",
-            "three": "What are some IAM guidelines and best practices?"
-        }
+  "IAM role": {
+    "IAM-credentials-report": "Account level lists the users and the status of their credentials",
+    "IAM-access-advisor": " User level shows the services permissions granted to a user and when they lasted used them",
+    "notes": "credentials-report: download as a csv file next rotation password last change keys mfa active access advisor: can use to see what access a user has and revok uneeded access",
+    "IAM guidelines and best practices": {
+      "one": "Don't use the root account except for initial setup",
+      "two": "One person is one aws user",
+      "three": "strong passowrd",
+      "four": "enable mfa",
+      "five": "create and use roles for giving permissions to aws services",
+      "six": "Will have to use access keys for the CLI "
     },
-    "EC2": {
-        "user scripts": "run commands on the instance at launch",
-        "user data": "Install updates install sofware download common file"
+    "questions": {
+      "An IAM policy consists of one or more statements. A statement in an IAM Policy consists of the following, EXCEPT": "A statement in an IAM Policy consists of Sid, Effect, Principal, Action, Resource, and Condition. Version is part of the IAM Policy itself, not the statement.",
+      "two": "What is the IAM access advisor?",
+      "three": "What are some IAM guidelines and best practices?"
     }
+  },
+  "EC2": {
+    "user scripts": "run commands on the instance at launch",
+    "user data": "Install updates install sofware download common file",
+    "EC2 instance types": {
+      "naming convention": "m5.2xlarge  m: instance family 5: generation 2xlarge: size",
+      "types": [
+        "General purpose",
+        "compute optimized",
+        "memory optimized",
+        "accelertated computing",
+        "storage optimized",
+        "HPC optimized",
+        "Instance features",
+        "Measuring instance performance"
+      ],
+      "Compute optimized": " Good for compute intensize tasks that require high performance processors ex include: Batch processing workloads, media transcoding, high performance web servers, high performance computing HPC scientific modeling and machine learning deidcaed gaming servers very good CPU performace",
+      "Memory optimized": [
+        "Good for fast perofrmace workloads that process large data sts in memory",
+        "High performance relational / non relational databases",
+        "Distributed web scale cache stores",
+        "In memory databases optimized for business intelligence",
+        "Application performaing real time processing of big unstructed data",
+        "R series R stands for ram and then there are the x series and the High memory Z1d"
+      ],
+      "Storage optimized": [
+        "Great for storage intensice tasks that rquire hihg, sequential read and write access to large data sets on local storage",
+        "High frequency online transaction processin oltp systems",
+        "Relation and no sqwl datbasese",
+        "cache for in memory databses like redis",
+        "data warehouse applications",
+        "distribted file systems",
+        "they will start with and i d and h1"
+      ]
+    },
+    "security groups": {
+      "Intro notes": [
+        "Security groups are the fundamental of network security in AWS",
+        "They will control how the traffic is allowed into or out of the ec2 isntance",
+        "secuirty groups only contain allow rules",
+        "security groups rules can refrance by ip or by security grou",
+        "Security groups act like a firewall on ec2 instances",
+        "They regulare the the access to portts authorized ip rnages control of inbound and outbound traffi1c",
+        "0.0.0.0 means everything",
+        "one security group has inbound and outbound rules",
+        "can be attached to multuple instance",
+        "locked down to region vpc combp",
+        "live outside the ec2",
+        "it good to maintain one seprate group for ssh acess",
+        "time out is a secruity group issue",
+        "connection reguse is not a secruity gorup isseu",
+        "by default all inbout trffic is blocked and all outbound traffic is authoried",
+        "Refrance other secuirty groups for the same instance",
+        "if they have the right security group they can talk to other instances if they are not autthorixzed in the outboutn rules then they will fail",
+        "classic ports 22 ssh log into a linux instance",
+        "21 for FTP file transer protocall uplaod files into a file share",
+        "22 sftp secure stransfel protocall",
+        "80 Http access unsecured websites",
+        "443 HTTPS access secured websites",
+        "3389 RDP remote desktip protocall will let you connect to a windows instance"
+      ],
+      "SSH": [
+        "Based on the type of OS there are diff ways to to connect SSH",
+        "SSH for mac linux and windows greateer than 10",
+        "putty is for all windows types",
+        "ec2 instance connect is web browsert based ui that lets you connect to all the os",
+        "Troubleshooting rewatch try ec2 instance connect if one method works your good to go"
+      ],
+      "ssh into mac": [
+        "over port 22 will access ec2 machine",
+        "PEM file is the key to access the ec2 instance",
+        "ssh ec20user @ the oip adderess that you have",
+        "use the public ip",
+        "chmos 0400 - the pem file ",
+        "never use aws congiure in the instance connect always attache an IAm roll to the instance"
+      ],
+      "EC2 instance purchasing options": {
+        "on demand": "short workloads, predictable pricing pay by second",
+        "Reserved": "1-3 years long workloads convertiablelreseved instances long worklaods with fexable instance",
+        "savings plans": " more modern 1-3 years term instead of instance type commeit to dollar amount",
+        "Spot instance": "shrot workloads cheap can lose instance less reliable",
+        "Dedicated host": "no other curstomers will share your hardware",
+        "capcity reservation": "reserve capacity in a specifc az for any duration"
+      },
+      "EC2 On Demand": [
+        "pay for what you use",
+        "Linux or windows billing per second after the frist minute use ",
+        "biling per hour ",
+        "has the higest cost but no upfront payment",
+        "no long term commitment",
+        "short term un interupted workloads"
+      ],
+      "EC3 Reserved instance": [
+        "up to 72 dicount compared to on demand",
+        "specift insatcne attributes",
+        "reservatio persiod",
+        "upfront or not upfront",
+        "reserved instance scope reginal or zone reseve capcity in availablity zone",
+        "recommended to stedy state uysage applications think databases",
+        "You can buy or sell in threserver instance markeplce"
+      ],
+      "Convertible reserved instance": [
+        "can change the ec2 instance type instance familiy os cope and tenancy what is tenancy",
+        "up to a 66 dicount"
+      ],
+      "EC2 savings plans": [
+        "Get a discoutn based on lont tern usage up to 72% same as reserver instance",
+        "Commit to a certain type of usage 10 hour for 1 or 3 years",
+        "Any usage beyond saving plan is billed at on demand rates",
+        "Locked to instance family and aws region",
+        "flexible across instanze size os and tenecy"
+      ],
+      "Ec2 spot instance": [
+        "can get a discount of up to 90- compared to on-demand",
+        "you can lose the instance if the spot price goes aboce your bid",
+        "great for workloads that are reslient to failure",
+        "barch jobs image processing andany image processin",
+        "Define a max spot proce and get the instance while current spot price is below your max",
+        "the hourly sport will vary",
+        "if it goes over you have a 2 minute grace period you can stop or terminate your instance without beign charged",
+        "spot block: block off a set time duration 1-6 without interuption",
+        "used for batch jobs data analysdid or wokrloads that are resilient to failures.",
+        "Not great for critrical jobs or databases",
+        "pricing",
+        {
+          "sport requests": [
+            "bases on the max price",
+            "desired number of instance",
+            "Launch specification AMI",
+            {
+              "Request type one time or persistent": [
+                "one time will create an ec2 instance when the condition is met one time",
+                " persistent will create a new e2 and the request will not go alway"
+              ]
+            },
+            "once it stops the spot request will be started again for you",
+            "you can only cancle a spot instance request that are open active or disabled",
+            "Cancelling a spot request will not terminate the instance",
+            "You must terminate the instances that the spot has created if you cancle the spot requst and the instance is already made it will not cancel it for you",
+            "To cancle a sport request you must first cancel a spot request and then terminate the associated spot instance",
+            ""
+          ]
+        },
+        {
+          "spot fleet": [
+            "a way to get a set of spot instance and optionally on demand instances",
+            "The spot fleet will try to meet the target capacity with price constraints",
+            "define possible launch pools instance types os AX",
+            "will chose the best pool for you and wil will stop when it reachs capacity or max cost",
+            "Lowest price pool with the lowest price",
+            "diversify distributre across all pools good for av and long workload",
+            "capacity optimized pools with the hihgest capcity availible then selevet pool with the lowesr price best for most workloads",
+            "saving saving"
+          ]
+        }
+      ],
+      "EC2 Dedicated hosts": [
+        "A phyical server with EC2 Instnace capacity fully deciated to you use",
+        "Allow you to address compliance requirments and use your exisitng server bound software licensed",
+        "per socket per core per vm software licenses",
+        "on demand resered the most expensice option",
+        " useful for software that have compicated licensing model BYOL bring your own license",
+        " or for companied that have strong regulatory or compliance needs"
+      ],
+      "EC2 Dedicated instances": [
+        "Instance running on hardware thats'd dedicated to  you",
+        "May share hardware with other instance in same acoutn",
+        "No control over instance placement",
+        " what is the diffrence betwen dedicated host and dedicated instan type?",
+        "Dedicated instance is the own hardware dedicated host you get acces to the pycial servert"
+      ],
+      "ex3 capacity reservation": [
+        "Reserve on demand instance capcity in specific az for any duration",
+        "You alwyas have access to the ec2 instance capacity when you need it",
+        "No time commitment",
+        "comine with regional reserved instance and saving plans to befit for it",
+        "You are charged at on demand rate wheather you run instance or not",
+        "short temen un interputed worked with low latency"
+      ]
+    }
+  },
+  "EC2 instance storage": {
+    "overview": [
+      "Different type of storage for EC2 instance"
+    ],
+    "EBS Elastic block storage": [
+      "Elastic block sotrage",
+      "An Elastic block store volume is a network drive you can attach to you instance while they run",
+      "It allows your instance to persist data even after the instance is terminated",
+      "They can only be mounted to one instance at at time (there is a note about this being a CCP Level)",
+      "They are bound to a specift availibility zone",
+      "think about them as network usb sticks and put it another computer",
+      "It is a network drvie  not a physical drive",
+      "there may be alittle bit of latency because it uses the network to communicate",
+      "It can be detached from an ec2 Instance and attached to another one quickly",
+      "Its locked to and az",
+      "To move a volume accross you will need to snapshot it and then you can move it to another az",
+      "Have to provision capacity in advace and  IOPS",
+      "you will get billed for the capacity ",
+      "It is possible to have two ebs attacvhed to the same ex2 instance",
+      {
+        "EBS Delete on termination": [
+          "by default the root ebs volume will be deleted when the instance is termincated",
+          "Controls the ebs behavior when an ec2 isntance terminated",
+          "By default any other ebs volume will not be deleted",
+          "You can control if you want to delete on term",
+          "You can perserve the roort if you want to terminate the instance and keep the root volume"
+        ]
+      },
+      {
+        "EBS snashots": [
+          "A backup of your ebs volume at a point in time",
+          "Not necessary to detach the volume to take a snapshot but it is recommened maybe because if you don't you could have a mistpatch of the data that you thought you had",
+          "can copy across az or region",
+          {
+            "EBS snapshot features": [
+              {
+                "EBS snapshot archive": [
+                  "Move a snaptshot to an archive tier that is 75% cheaper",
+                  "Takes withing 25 to 72 hours to restore the archive"
+                ]
+              },
+              {
+                "recycle bin for EBS snapshots": [
+                  "Setup rules to retain deleted snapshots so you can recover them after acceidental deletion",
+                  "retention from 1 day to one year"
+                ]
+              },
+              {
+                "Fast snapshot restore": [
+                  "Force full initiation of the snapshot to have no latency on the first use",
+                  "cost the most money but its is the fastest"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "EC2 instance store": [
+      "A way to have a physical drive on the server",
+      "The name of the harddrive attached to the server",
+      "better io performace",
+      "the sotrage is lost when the instance is termiantied",
+      "ephemeral storage",
+      "good for buffer chache and temp content",
+      "Ris of data loss if the hardware fails",
+      "backup and replication is your responsibility"
+    ],
+    "EBS volume tyes": {
+      "gp2 and gp3": "General purpose SSD volume that balacnes price and performance for a variety of worklaods",
+      "io1 and io2": "high performance SSD volume for critical low latency or high throughput worklaods",
+      "st1": "Low cost HDD volume designed for frequently accessed throughput intensive worloads",
+      "sc1": "Lowest cose HDD volume designed for less frequently accessed worloads",
+      "How can you define an ebs volume there?": [
+        "size",
+        "Throughput",
+        "IOPS",
+        "only for ec2 instances gp2 and gp3 and io1 and io2 block express can be used as boot volumes (where the root os will run)"
+      ],
+      "General purpose SSD use cases": [
+        "cost effective low latency",
+        "system boot volumes virtual desktops development and test enviorments",
+        "1gib - 16tiib",
+        "gp3 has a baseline of 3,000 iops and 125mibs can increase to 16k and 1k respectivly",
+        "gp2 small gp2 volumes can burst iops to 3k",
+        "size of the volume and iops are linked max iops is 16k",
+        "3iops per GB so once the ssd is at 5334 you will have the max iops"
+      ],
+      "Provisioned IOPS ssd": [
+        "Critical business  applications that require sustained iops performance",
+        "applications that need more the 16k iops",
+        "Great for DBs workloads that are sensitive to storage performance",
+        "io1 max piops 64k for nitro and 32k for other",
+        "Can increase PIOPS independently of the storage size",
+        "io2 block express",
+        "256k max PIOPS",
+        "supports EBS multi match"
+      ],
+      "Hard disk drive": [
+        "Cannot be a boot volume",
+        "16 tbs",
+        "st1 big data warehouses log prrocessions"
+      ]
+    },
+    "EBS multi attach io1 io2 family": [
+      "Attach the same EBS volumes to multiple ec2 instance in the same AZ",
+      "can use it for clustering and high availibility workloads",
+      "io1 and io2 only",
+      "Full read and write to the high performance volume",
+      "hihger application availiblity ",
+      "must manage concurent writes",
+      "
+      "
+    ]
+  },
+  "AMI": {
+    "Overview": [
+      "Amazon machine image",
+      "custimation of the ec2 instance",
+      "OS add software congfiguration",
+      "Pre packaged config",
+      "Copoie across region",
+      "Publick ami provided by aws",
+      "Create your own ami",
+      "AWS marketplace ami made or sold by someoned else",
+      ""
+    ]
+  }
 }
