@@ -381,7 +381,7 @@
       "Horiziontal is addming more ec2 instance and having you app run in different timezones",
       "vertical scaling is increasing hardware size / capacity"
     ],
-    "ELB Elastic Load balance": {
+    "ELB Elastic Load balancer": {
       "Overview": [
         "A server or a set of server that will foward traffic to to multiple servers (Ec2 instnace) donwstream",
         "spread the load acroos multiple downstreams",
@@ -392,7 +392,28 @@
         "Enforce stickyness with cookies",
         "high availabilty across zones",
         "Seperate public from private traffic"
-      ]
+      ],
+      "why use elbs": [
+        "ELBS is a manages load balancer",
+        "AWS guartees that it will be working",
+        "AWS takes care of the upgrades maintenance high availability",
+        "AWS only provides a few configuration knobs",
+        "It cost less to setup your own load balancer bit it will be high lift",
+        "is integrated with alot og aws offering"
+      ],
+      "Health checks": [
+        "A way for your elb to check the health of the ec2 instance so that it doesn't send any traffic over to it",
+        "the ec2 isntance has a health endpoint",
+        "if the responnse is not 200 its not up"
+      ],
+      "Types of load balancers": {
+        "Types": [
+          " classic load balacner",
+          "Application Load balancer",
+          "ApL support wbsockerl",
+          "netowrk load balancer "
+        ]
+      }
     }
   }
 }
