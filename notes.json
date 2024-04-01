@@ -375,5 +375,24 @@
       "can leverage EFS-ia for cost savings",
       "instance store is phycisal disk attached to the ec22 isntance"
     ]
+  },
+  "High availability and scaleablility  elb and ASG": {
+    "overview": [
+      "Horiziontal is addming more ec2 instance and having you app run in different timezones",
+      "vertical scaling is increasing hardware size / capacity"
+    ],
+    "ELB Elastic Load balance": {
+      "Overview": [
+        "A server or a set of server that will foward traffic to to multiple servers (Ec2 instnace) donwstream",
+        "spread the load acroos multiple downstreams",
+        "Expose a single point of access DNS to your application",
+        "Seamlessly hadle failures of downstream instance because your load balance will have the health state of your ec2 isntance",
+        "Do regular health checks on your instance",
+        "Provided ssl termination HTTPS for your websites",
+        "Enforce stickyness with cookies",
+        "high availabilty across zones",
+        "Seperate public from private traffic"
+      ]
+    }
   }
 }
