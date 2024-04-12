@@ -1,0 +1,24 @@
+{
+  "scaling policy": [
+    "using cloudwatches alarm its possible to scale in and out creating and destroying instances",
+    "An alarm monitors  a metric such as avrage cpu or a custom metric",
+    "If your avrage cpu for your asg is too high metrics are computed for the overallasg instnace"
+  ],
+  "dyanmic scaling": [
+    "simple to setup",
+    "example I want the avrage asg cpu to stay at aroudn 40%"
+  ],
+  "simple/step scaling": [
+    "When a cloud watch alarm is triggeres then add two units",
+    "when a cloud watch alarm is triggered cpuu is less than 30 remove 1 unit"
+  ],
+  "scheduled scaling": [
+    "anticipate a scaling based on know pattern usage ",
+    "increase themain capitu form 10pm"
+  ],
+  "scalling down": [
+    "After a scaling actibity happens you are in a cooldown perios 300s seconds 5min",
+    "During the cooldown period the asg will not launch or terminate instances (allow metrics to stablize)",
+    "When a scalling action occurs is ther a cooldown in effect if there is do nothing if there is not then followthough the scalig plocy":qa
+  ]
+}
