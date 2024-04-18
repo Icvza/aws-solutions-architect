@@ -512,6 +512,97 @@
         "its a newer protocal that requires the client to indicate the hostmname of the target sever in tht inital ssl HS",
         "only works for apllication LB and netwoek LB"
       ]
+    },
+    "Amazon RDS overview": {
+      "overview": [
+        "Rds stands for relationla database",
+        "Its a managed DB service that uses sql as the query language",
+        "it allows you to create dbs in the cloud that are managed with aws",
+        "DB that are rds mariadb postqres mysql oracle mssql server imb db2 aura(amazons proprietary ddb)",
+        "Advantage of using RDS versus deploying a db on an ec2 instance",
+        "RDS is a managed service",
+        "Automated provisioning and os patching",
+        "Continues backoup and restore to specific timestamp point in time restore",
+        "Monitoring dashboars to give you performance of the db",
+        "Read replica for improved performance spee",
+        "Multi az for DR - disaster recovery",
+        "Maintenace windows for upgrades",
+        "scalling both vertial by scalling the instace type and horiziontal by adding more read replicas",
+        "Storage is backe by an ebs gp2 or io1",
+        "you can not ssh into your db instances"
+      ]
+    },
+    "RDS Sotrage auto scalling": [
+      "Helps you increase sotrage on your RDS db dynamiclly",
+      "avoid manually scalling your db storage",
+      "To manually scale your dn storage you need to set maximum threshold (max limit for your db)",
+      "Automatily modify sotrage if free storage is less than 10% of allocated sotrage and the low storage last for at least 5 mins",
+      "and 6y hours have passed since the last mod",
+      "Useful for applications with unpredictable workloads",
+      "supports all rds database engine"
+    ],
+    "RDS read replica for scalabilit": [
+      "for the exam it is important to understand the difference between read replica and across az",
+      "Read replica help you scale your reads",
+      "can create up to 15 read replicas",
+      "wihing the same availability zone cross az or cross region"
+    ],
+    "RDS MZ": [
+      "mostly used for disaster recovery",
+      "SYNC replication",
+      "creats a snapshot of the db and then creates a db in another az and then sync the changes",
+      "one dns name autmaic app failover to standby",
+      "increasing availability",
+      "failover incase of case of loss of az loss of az",
+      "No manual interventin in app",
+      "not used for scaling"
+    ],
+    "from single to multi az": [
+      "how to go from single multi az",
+      "Zero downtime",
+      "zero downtime operation (no need to stop db)",
+      "Just click on modify on the db and enable multi az",
+      "that measn that the master is going to have a standby copy of the db",
+      "Creates a snapshot and then replicates the db"
+    ],
+    "RDS custom": [
+      "Can and do Have access to the underlying infrastructure",
+      "Manged oracle and microsoft sql  server database with os and database custpmization",
+      "RDS automates setup opernation and scalling in aws",
+      "the custom is getting acess to underlying infrastructure ussing ssh and ssm",
+      "it is recommended to diactive the autmation mode to perform your customization better to take a db snapshot before"
+    ],
+    "Auroa": [
+      "Auroa is propritary technology from aws (not open source)",
+      "Postgres and mysql are both supported as auroa db",
+      "Aura is cloud optimized and claims 5x performance improvement over mysel on rdsand over 3x on ",
+      "Aurora sotrage automaticly grows inincrements of 10gbup to 128gb",
+      "Aurora can have up to 15 replicas and the replication process is faster then mysql subs 10ms",
+      "failover in aurora is instantaneuos It HA natice",
+      "aurora cost more thank RDS but is more efficent",
+      "store 6 copies of your data across 3 az",
+      "4 copies out of 6 needed for writes",
+      "3 copies out of 6 needed for reads",
+      "self heling with peer to peer replication if somehting is currupted the other dbs will restore the data",
+      "shared sotrage volume from 10gb to 128gb",
+      "Master is the only thing that will write to the storage writer endoint",
+      "you can have have auto scaling on your read replicas",
+      "there is load balancing there is reader endpoint that is a LB to the autoscaller replcas",
+      "if the writes are fowrded to the read replicas  then you could turn on write fowarding that will redirct your undirect fwd to write",
+      "can careate an auto scalling policy based on the avrage cpu or varge connections"
+    ],
+    "auroa advanced concetps": {
+      "auto scaling": "based on cpu the auto scaller wiill create more read replicas and will also extend the enpoint so that your repliucs will start getting traffic""custom endpoints": "some read replicas are different than others and you can connectc them to different edpoints",
+      "serverless": "Automated database instantaion and auto scaling based on actual usge",
+      "severllss continute": [
+        "Good for infrequent intermitten or upredicatble workload",
+        "No need to do any capacity planning pay per secon can be more cost effective",
+        "Yout client will talk to a proxy fleet that is managed by auroa",
+        "Global aurora Aurora cross refion read replicas useful for disaster recovery and simple to put in place",
+        "you can setup 5 secondary  read ony regiond replication laf is less than 1 second",
+        "UP to 16 read replicas pers secodary region",
+        "
+      ]
     }
   }
 }
